@@ -1,5 +1,5 @@
 <?php
-require_once('system/conexão.php');
+require_once('system/conexao.php');
 session_start();
 
 if (isset($_POST['acao']) && $_POST['acao'] == "entrar") {

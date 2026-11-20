@@ -1,116 +1,167 @@
-<h1 align="center">
-  🗓 Agendamento de Salas (SENAI) 🗓
-</h1>
+<p align="center">
+  <img src="docs/banner.png" alt="Agendamento de Salas - Ambientes SESI/SENAI" width="100%">
+</p>
+
+<h1 align="center">🗓️ Agendamento de Salas (SENAI)</h1>
 
 <p align="center">
-  <a href="#-sobre-o-projeto">Sobre</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-tecnologias">Tecnologias</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-funcionalidades">Funcionalidades</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-visual-do-projeto">Visuais</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-como-executar">Como Executar</a>
+  Portal web em <b>PHP</b> e <b>MySQL</b> para reservar salas e laboratórios da rede <b>SESI/SENAI</b>, com
+  painel do <b>administrador</b> para cadastrar ambientes e liberar o acesso dos usuários.
 </p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white" alt="PHP">
-  <img src="https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL">
-  <img src="https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white" alt="Bootstrap">
-  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript">
+  <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL">
+  <img src="https://img.shields.io/badge/Bootstrap-5-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white" alt="Bootstrap">
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5">
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3">
 </p>
 
-<br>
-
-## 💻 Sobre o Projeto
-
-O **Agendamento de Salas** é um portal completo e intuitivo desenvolvido para solucionar desafios reais na gestão da infraestrutura de ambientes educacionais e laboratórios da rede SENAI. 
-
-Construído em PHP com banco de dados MySQL, o sistema fornece uma interface web dinâmica e responsiva (utilizando o Bootstrap) para que professores possam reservar salas e administrar suas disciplinas em laboratórios práticos. Além disso, a aplicação conta com um **painel gerencial robusto** focado na administração, permitindo controle total sobre os usuários, loteamentos e criação de novos ambientes de ensino.
-
-O projeto representou uma oportunidade incrível para a aplicação de conceitos sólidos de back-end: **CRUD completo, relacionamento entre tabelas, sessões para mecanismos de autenticação (Login protegido e Rotas fechadas), além de modelagens nativas do PHP**.
-
----
-
-## 🚀 Tecnologias e Ferramentas
-
-Esse sistema foi construído e padronizado utilizando as seguintes tecnologias:
-
-- **Front-end**:
-  - `HTML5` e `CSS3`
-  - `JavaScript` (Manipulação de modais interativos)
-  - `Bootstrap` (Responsividade e Grid Layouts)
-- **Back-end**:
-  - `PHP` (Lógica de negócios e controle de Sessions em rotas bloqueadas)
-- **Banco de Dados**:
-  - `MySQL` (Integrações com PDO/MySQLi diretas, relacionamentos base e deletes em cascata para exclusão de andares/blocos)
-- **Infraestrutura e Ferramentas**:
-  - `XAMPP` (Apache e ambiente MySQL local)
-  - `phpMyAdmin`
+<p align="center">
+  <a href="#-sobre-o-projeto">Sobre</a> •
+  <a href="#-funcionalidades">Funcionalidades</a> •
+  <a href="#️-telas">Telas</a> •
+  <a href="#-como-executar">Como executar</a> •
+  <a href="#️-banco-de-dados">Banco de dados</a> •
+  <a href="#-estrutura-do-projeto">Estrutura</a> •
+  <a href="#️-tecnologias">Tecnologias</a>
+</p>
 
 ---
+
+## 📌 Sobre o projeto
+
+O **Agendamento de Salas** é um portal desenvolvido para ajudar na gestão dos ambientes educacionais e laboratórios
+da rede **SESI/SENAI**.
+
+Construído em PHP com banco de dados MySQL, o sistema tem uma interface web responsiva (Bootstrap) em que os
+professores veem as salas cadastradas e reservam as que estão disponíveis. O administrador tem um painel para criar e
+editar ambientes e para aprovar as contas recém-cadastradas.
+
+O projeto foi uma oportunidade para aplicar conceitos de back-end: **CRUD**, **relacionamento entre tabelas**
+(salas × andares × blocos) e **sessões** para autenticação e páginas protegidas.
 
 ## ✨ Funcionalidades
 
-O sistema foi arquitetado com base em rotas condicionais e níveis de acesso, entregando visões específicas:
+### 👨‍🏫 Professor (usuário geral)
 
-### 👨‍🏫 Acesso Professor (Usuário Geral)
-- **Visão Funcional**: Acesso à página inicial (Landing Interface) para visualizar em blocos todas as salas cadastradas e suas informações correspondentes (Andar, Capacidade e Descrição).
-- **Agendamentos**: Verificação de status na lista e possibilidade de enviar uma nova solicitação de laboratório em data e hora.
-- **Perfil**: Área logada para alteração dos próprios dados e informações do sistema.
+| | Recurso | Descrição |
+|---|---|---|
+| 📝 | **Cadastro** | Nome, e-mail, senha e instituição (SESI, SENAI ou outros); a conta fica pendente até ser aprovada |
+| 🔐 | **Login** | Acesso liberado só para contas aprovadas (senha guardada em MD5) |
+| 🏫 | **Salas em cards** | Todas as salas com cor por status: 🟩 Disponível, 🟥 Ocupada e 🟨 Manutenção |
+| 🔎 | **Detalhes da sala** | Descrição, bloco, andar e, se estiver ocupada, data e horário da reserva |
+| 📅 | **Agendamento** | Salas disponíveis podem ser reservadas informando data, hora inicial e hora final |
+| 👤 | **Perfil** | Janela com os dados da conta e o botão para sair |
 
-### 🛡️ Acesso Administrador (Gestão Total)
-- **Gestão de Infraestrutura e Espaços**: Painéis de criação, edição e remoção completa para:
-  - Salas / Laboratórios
-  - Andares
-  - Blocos
-- **Central de Contas**: Sistema de moderação no qual cada usuário recém cadastrado fica "pendente", aguardando a liberação (aprovar conta) ou negação pelo Administrador Geral da Unidade.
-- **Controle Administrativo das Reservas**: Acesso à cancelamentos remotos de reservas ou remanejamento forçados devido a manutenções repentinas em laboratórios.
+### 🛡️ Administrador
 
----
+| | Recurso | Descrição |
+|---|---|---|
+| ➕ | **Ambientes** | Cadastro de andares, blocos e salas (com status, andar e bloco) |
+| ✏️ | **Edição de salas** | Altera nome, descrição e status ou exclui a sala |
+| ✅ | **Validação de contas** | Lista de usuários não validados para aprovar ou excluir |
+| 👥 | **Todos os usuários** | Validar, invalidar, editar (incluindo o nível de acesso) e excluir usuários |
 
-## 📸 Visual do Projeto
+## 🖼️ Telas
 
-Aqui estão algumas das telas e interações centrais do sistema, que comprovam o UI e funcionamento na prática:
+<table>
+  <tr>
+    <td align="center"><b>Cadastro</b><br><img src="ImagensGit/Sistemas%20Agenda%20(1).png" alt="Cadastro"></td>
+    <td align="center"><b>Login</b><br><img src="ImagensGit/Sistemas%20Agenda%20(2).png" alt="Login"></td>
+  </tr>
+  <tr>
+    <td align="center"><b>Salas (administrador)</b><br><img src="ImagensGit/Sistemas%20Agenda%20(3).png" alt="Salas na visão do administrador"></td>
+    <td align="center"><b>Salas (professor)</b><br><img src="ImagensGit/Sistemas%20Agenda%20(4).png" alt="Salas na visão do professor"></td>
+  </tr>
+  <tr>
+    <td align="center"><b>Agendar uma sala</b><br><img src="ImagensGit/Sistemas%20Agenda%20(7).png" alt="Agendamento"></td>
+    <td align="center"><b>Detalhes da sala</b><br><img src="ImagensGit/Sistemas%20Agenda%20(8).png" alt="Detalhes da sala"></td>
+  </tr>
+  <tr>
+    <td align="center"><b>Editar sala</b><br><img src="ImagensGit/Sistemas%20Agenda%20(9).png" alt="Editar sala"></td>
+    <td align="center"><b>Adicionar sala</b><br><img src="ImagensGit/Sistemas%20Agenda%20(12).png" alt="Adicionar sala"></td>
+  </tr>
+  <tr>
+    <td align="center"><b>Usuários não validados</b><br><img src="ImagensGit/Sistemas%20Agenda%20(13).png" alt="Usuários não validados"></td>
+    <td align="center"><b>Todos os usuários</b><br><img src="ImagensGit/Sistemas%20Agenda%20(14).png" alt="Todos os usuários"></td>
+  </tr>
+</table>
 
-<p align="center">
-  <img src="ImagensGit/Sistemas Agenda (1).png" width="48%" alt="Apresentação 1">
-  <img src="ImagensGit/Sistemas Agenda (2).png" width="48%" alt="Apresentação 2">
-</p>
+> Na pasta [`ImagensGit`](ImagensGit) estão as demais telas (perfil, adicionar andar e adicionar bloco).
 
-<p align="center">
-  <img src="ImagensGit/Sistemas Agenda (3).png" width="48%" alt="Apresentação 3">
-  <img src="ImagensGit/Sistemas Agenda (4).png" width="48%" alt="Apresentação 4">
-</p>
+## 🚀 Como executar
 
-> *Na pasta interna `ImagensGit` constam as demais impressões das outras páginas de navegação, relativas aos diferentes perfis.*
+### Com XAMPP (ou WAMP/Laragon)
 
----
-
-## ⚙️ Como Executar Localmente
-
-Basta seguir os passos abaixo para testar este projeto em sua própria máquina:
-
-### 1. Pré-Requisitos
-Você necessita de um ambiente como **XAMPP**, **WAMP** ou **Laragon** (Que suba um servidor Apache unificado com MySQL).
-
-### 2. Instalando
-1. Faça o clone deste repositório para o diretório local do servidor (Exemplo com XAMPP: pasta interna do `htdocs`).
+1. Inicie o **Apache** e o **MySQL**.
+2. Clone o repositório dentro do `htdocs`:
    ```bash
-   git clone https://github.com/seugithub/agendamento-de-salas.git
+   git clone https://github.com/kauaxp77/Agendamento-de-Salas.git
    ```
-2. Abra o painel gerenciador da sua ferramenta (XAMPP Panel) e inicie os serviços **Apache** e **MySQL**.
-3. Acesse em seu navegador a dashboard do seu banco: `http://localhost/phpmyadmin/`.
-4. Crie um novo banco de dados vazio e **importe o script `ambientes.sql`**, localizado na raiz deste repositório para recriar as tabelas base e popular os dados de teste.
+3. No phpMyAdmin (`http://localhost/phpmyadmin/`), crie o banco **`ambientes`** e importe o
+   [`ambientes.sql`](ambientes.sql), que cria as tabelas e os dados de teste.
+4. Acesse `http://localhost/Agendamento-de-Salas/agendamento/login.php`.
 
-### 3. Acessando a Plataforma
-Pronto! Com o Apache rodando, acesse a pasta raiz onde o repositório foi clonado no navegador:
-`http://localhost/Agendamento-de-Salas/agendamento/login.php`
+### Com o servidor embutido do PHP
 
-> **Credenciais de Teste Administrativo:**
-> * **E-mail**: `adm@gmail.com`
-> * **Senha**: `123`
-> *(Ou você pode criar e aprovar seus próprios usuários!)*
+```bash
+mysql -u root -e "CREATE DATABASE ambientes"
+mysql -u root ambientes < ambientes.sql
+php -d output_buffering=4096 -S localhost:8000
+```
 
----
+Acesse `http://localhost:8000/agendamento/login.php`. O `output_buffering` evita o erro de cabeçalho já enviado nos
+redirecionamentos (no XAMPP ele já vem ligado no `php.ini`).
 
-<p align="center">
-  Desenvolvido com 💼 para fins educacionais e de portfólio.
-</p>
+A conexão fica em `agendamento/system/config.php` (`localhost`, usuário `root`, senha vazia, banco `ambientes`).
+
+> **Credenciais de teste** (senha `123`):
+> * Administrador: `adm@gmail.com`
+> * Professor: `Usuario@gmail.com`
+>
+> Ou crie uma conta em **Cadastre-se** e aprove-a pelo administrador.
+
+## 🗄️ Banco de dados
+
+| Tabela | Função |
+|---|---|
+| `tb_usuarios` | Usuários, instituição e nível (`0` pendente, `1` professor, `2` administrador) |
+| `tb_salas` | Salas, descrição, status (`1` disponível, `2` ocupada, `3` manutenção) e dados da reserva |
+| `tb_andar` | Andares |
+| `tb_bloco` | Blocos e descrição |
+| `tb_pc` | Tabela auxiliar (ainda sem uso nas telas) |
+
+As salas referenciam andar e bloco com chaves estrangeiras `ON DELETE CASCADE`.
+
+## 📁 Estrutura do projeto
+
+```
+Agendamento-de-Salas/
+├── agendamento/
+│   ├── login.php           # Login
+│   ├── cadastro.php        # Cadastro de usuário
+│   ├── paginicial.php      # Página inicial: salas, agendamento e painel do administrador
+│   ├── administrador.php   # Usuários aguardando validação
+│   ├── todosusuarios.php   # Todos os usuários
+│   ├── editar.php          # Edição de usuário
+│   ├── sobre.html          # Página "Como funciona?"
+│   ├── system/             # config.php e conexao.php (conexão com o MySQL)
+│   └── assets/             # CSS e imagens
+├── ImagensGit/             # Capturas de tela usadas neste README
+├── docs/                   # Banner deste README
+└── ambientes.sql           # Script do banco com dados de teste
+```
+
+## 🛠️ Tecnologias
+
+- **Front-end:** HTML5, CSS3 e Bootstrap 5 (modais e grid responsivo)
+- **Back-end:** PHP com `mysqli` e sessões
+- **Banco de dados:** MySQL
+- **Ambiente:** XAMPP (Apache + MySQL) e phpMyAdmin
+
+## 👨‍💻 Autor
+
+Desenvolvido por **[kauaxp77](https://github.com/kauaxp77)**
+
+<p align="center">⭐ Se curtiu o projeto, deixe uma estrela!</p>
